@@ -9,7 +9,7 @@ function addTaskToDOM(task){
     const li = document.createElement('li');
 
     li.innerHTML = `
-    <input type="checkbox" id="${task.id}" ${task.Done? 'checked': ''} class="custom-checkbox">
+    <input type="checkbox" id="${task.id}" ${task.Done ? 'checked': ''} class="custom-checkbox">
     <label for="${task.id}">${task.text}</label>
     <div class="delete" data-id="${task.id}">
     <i class="fa-solid fa-trash"></i>
@@ -62,7 +62,7 @@ function toggletasks(taskId) {
     if(task.length > 0){
         const currenttask = task[0];
 
-        currenttask.done = !currenttask.done;
+        currenttask.Done = !currenttask.Done;
         renderList();
         showNotifications('Task toggled succesfully');
         return;
