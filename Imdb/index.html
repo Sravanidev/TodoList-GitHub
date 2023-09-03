@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <Title>IMDB CLONE APP</Title>
+    <link rel='stylesheet' type='text/css' media='screen' href="imdb.css" >
+</head>
+
+<body>
+    <div class="wrapper">
+      <!-- logo -->
+        <div class="logo">
+            <div class="container">
+              <p>IMDB <span>Clone.</span></p>
+            </div>
+        </div>
+    <!-- logo -->
+
+    <!-- search container -->
+    <div class="search-container">
+        <div class="search-element">
+            <h3>Search</h3>
+            <input placeholder="Enter Movie name..." type="text" class="form-control" id="movie-search-box" onkeyup="findMovies()">
+
+            <div class="search-list" id="search-list">
+                <!-- List here -->
+                <div class="search-list-item">
+                    <!-- <div class="search-item-thumbnail">
+                        <img src="${moviePoster}">
+                    </div>
+
+                    <div class="search-item-info">
+                        <h3>${movies[idx].Title}</h3>
+                        <p>${movies[idx].Year}</p>
+                    </div> -->
+                </div>
+</div>
+               
+            </div>
+        </div>
+    </div>
+    <!-- end of search container -->
+
+    <!-- result container -->
+    <div class="container">
+        <div class="result-container">
+            <div class="result-grid" id="result-grid">
+                <!-- movie-information here -->
+                <div class="movie-poster">
+                    <img src="WhatsApp.jpg" alt="movie-poster">
+                </div>
+
+                <div class="movie-info">
+                    <h3 class="movie-title"> Guardians of the Galaxy</h3>
+
+                    <ul class="movie-misc-info">
+                        <li class="year">Year:2017</li>
+                        <li class="rated">Ratings: PG13 </li>
+                        <li class="released"> Released: 30 May 2017</li>
+                    </ul>
+
+                    <p class="genre"><b>Genre: </b> Action, Adventure, Comedy
+                    </p>
+                    <p class="writers"><b>Writers: </b> James Gunn, Don Abbet</p>
+                    <p clas="actors"><b>Actors:</b>Chris pratt, Zoe saldano</p>
+                    <p class="Plot"><b>Plot:</b> The Guardians save the galaxy from outsiders while chris pratt has some personal problems with his father. </p>
+                    <p class="language"><b>Language: </b> English</p>
+                    <p class="awards"><b>Awards: </b>Nominated for 1 Oscar</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end of result container -->
+    </div> <!--end of wrapper class-->
+    <script src="imdb.js"></script>
+
+</body>
+
+</html>

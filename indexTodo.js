@@ -5,12 +5,24 @@ var addtaskInput = document.getElementById('add');
 var tasksCounter = document.getElementById('tasks-counter');
 console.log("working");
 
+function fetchTodos(){
+    //Get request
+    fetch("https://jsonplaceholder.typicode.com/todos")
+    .then(function(response){
+        console.log(response);
+        return response.json();
+    }).then(function(data){
+        tasks = data.slice(0, 10);
+        renderList();
+    })
+}
+
 function addTaskToDOM(task){
     const li = document.createElement('li');
 
     li.innerHTML = `
-    <input type="checkbox" id="${task.id}" ${task.Done ? 'checked': ''} class="custom-checkbox">
-    <label for="${task.id}">${task.text}</label>
+    <input type="checkbox" id="${task.id}" ${task.completed ? 'checked': ''} class="custom-checkbox">
+    <label for="${task.id}">${task.title}</label>
     <div class="delete" data-id="${task.id}">
     <i class="fa-solid fa-trash"></i>
         </div>
@@ -41,7 +53,7 @@ function addTasks(task) {
 
 function deleteTasks(taskId) {
     const newtasks = tasks.filter(function(task){
-      return task.id !== taskId;
+      return task.id !== Number(taskId);
     })
 
     tasks = newtasks;
@@ -56,7 +68,7 @@ function showNotifications(text) {
 
 function toggletasks(taskId) {
     const task = tasks.filter(function(task){
-        return task.id === taskId;
+        return task.id === Number(taskId);
     })
 
     if(task.length > 0){
@@ -81,9 +93,9 @@ function handleInputKey(e){
         }
 
         const task = {
-            text,
-            id : Date.now().toString(),
-            Done: false
+            title: text,
+            id : Date.now(),
+            completed: false
         }
         e.target.value = '';
         addTasks(task);
@@ -105,8 +117,14 @@ function handleClickevents(e){
     }
 }
 
+function initializeApp(){
+
+fetchTodos();
 addtaskInput.addEventListener('keyup', handleInputKey);
 document.addEventListener('click', handleClickevents);
 
+}
+
+initializeApp();
 
 
