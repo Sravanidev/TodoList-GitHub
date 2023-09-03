@@ -1,7 +1,7 @@
 // https://www.omdbapi.com/?s=spiderman&page=1&apikey=5f9b0344
 // https://www.omdbapi.com/?i=tt3896198&apikey=5f9b0344
 
-const movieSearchBox = document.getElementById('movie-search-box');
+{const movieSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
 
@@ -31,10 +31,12 @@ function displayMovieList(movies){
         let movieListItem = document.createElement('div');
         movieListItem.dataset.id = movies[idx].imdbID; // setting movie id in  data-id
         movieListItem.classList.add('search-list-item');
-        if(movies[idx].Poster != "N/A")
+        if(movies[idx].Poster != "N/A"){
             moviePoster = movies[idx].Poster;
-        else 
-            moviePoster = "image_not_found.png";
+        }
+        else{ 
+            moviePoster ="download.png";
+        }
 
         movieListItem.innerHTML = `
         <div class = "search-item-thumbnail">
@@ -68,7 +70,7 @@ function loadMovieDetails(){
 function displayMovieDetails(details){
     resultGrid.innerHTML=`
 <div class="movie-poster">
-    <img src="${details.Poster != "N/A" ? details.Poster : "image_not_found"}" alt="movie-poster">
+    <img src="${details.Poster != "N/A" ? details.Poster : "download.png"}")}" alt="movie-poster">
 </div>
 
 <div class="movie-info">
@@ -90,8 +92,16 @@ function displayMovieDetails(details){
     `;
 }
 
-window.addEventListener('click', (event) => {
+function initializefunc(){
+    window.addEventListener('click', (event) => {
     if(event.target.id != "form-control"){
         searchList.classList.add('hide-search-list');
     }
 })
+movieSearchBox.addEventListener('keyup', findMovies);
+movieSearchBox.addEventListener('click', findMovies);
+
+}
+
+initializefunc();
+}
